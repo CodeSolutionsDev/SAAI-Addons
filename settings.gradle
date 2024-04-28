@@ -1,0 +1,5 @@
+rootProject.name = "SAAI-Addons"
+include 'anthropic'
+include 'azure-openai'
+include 'mistral-ai'
+
