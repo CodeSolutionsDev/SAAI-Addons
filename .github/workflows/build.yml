@@ -1,0 +1,26 @@
+name: Build Addons
+
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "zulu"
+          java-package: jdk
+      - name: Build
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          arguments: build
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Build Output
+          path: "out/*.jar"
+          retention-days: 1
