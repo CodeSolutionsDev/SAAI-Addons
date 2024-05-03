@@ -27,6 +27,7 @@ langchain4j-anthropic = { group = "dev.langchain4j", name = "langchain4j-anthrop
 langchain4j-azureopenai = { group = "dev.langchain4j", name = "langchain4j-azure-open-ai", version.ref = "langchain4j" }
 langchain4j-vertexai = { group = "dev.langchain4j", name = "langchain4j-vertex-ai-gemini", version.ref = "langchain4j" }
 langchain4j-mistralai = { group = "dev.langchain4j", name = "langchain4j-mistral-ai", version.ref = "langchain4j" }
+langchain4j-huggingface = { group = "dev.langchain4j", name = "langchain4j-hugging-face", version.ref = "langchain4j" }
 
 # Annotations
 lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }
