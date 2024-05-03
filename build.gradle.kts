@@ -16,6 +16,7 @@ ext {
 
 subprojects {
     apply(plugin = "java")
+
     repositories {
         mavenCentral()
         maven("https://repo.bluetree242.dev/public")
@@ -29,15 +30,18 @@ subprojects {
         compileOnly(rootProject.libs.lombok)
         annotationProcessor(rootProject.libs.lombok)
     }
-    tasks.build {
-        finalizedBy(tasks.withType(ShadowJar::class.java))
-    }
+
     java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
     tasks.compileJava {
         options.encoding = "UTF-8"
     }
-}
 
+    tasks.jar {
+        manifest {
+            attributes("paperweight-mappings-namespace" to "mojang")
+        }
+    }
+}
 
 gradle.projectsEvaluated {
     subprojects {
@@ -56,12 +60,21 @@ gradle.projectsEvaluated {
                 archiveBaseName = bukkit.name
             }
         }
+        tasks.build {
+            finalizedBy(tasks.withType(ShadowJar::class.java))
+        }
         if (plugins.hasPlugin("com.github.johnrengelman.shadow")) {
             tasks.withType(ShadowJar::class.java) {
+                finalizedBy(copyBuildOutput)
                 archiveClassifier.set("")
                 minimize()
                 archiveBaseName = tasks.jar.get().archiveBaseName
+                manifest {
+                    from(tasks.jar.get().manifest)
+                }
             }
+        } else {
+            tasks.build.get().finalizedBy(copyBuildOutput)
         }
     }
 }
@@ -80,18 +93,6 @@ val copyBuildOutput by tasks.registering {
                     into(outputDir)
                 }
             }
-        }
-    }
-}
-
-subprojects {
-    afterEvaluate {
-        if (plugins.hasPlugin("com.github.johnrengelman.shadow")) {
-            tasks.withType(ShadowJar::class.java) {
-                finalizedBy(copyBuildOutput)
-            }
-        } else {
-            tasks.build.get().finalizedBy(copyBuildOutput)
         }
     }
 }

@@ -12,6 +12,7 @@ import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.output.Response;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -31,7 +32,7 @@ public class AnthropicChatModelProvider implements ChatModelProvider<AnthropicCh
         Integer maxRetries = (Integer) options.get("max_retries");
         //noinspection unchecked
         List<String> stop = (List<String>) options.get("stop");
-        if (model.isBlank()) throw new IllegalStateException("Please set the model for anthropic chat model.");
+        if (model.isBlank()) throw new IllegalStateException("Please set the model for Anthropic chat model.");
         return new AnthropicWrapper(
                 AnthropicChatModel.builder()
                         .modelName(model)
@@ -65,6 +66,12 @@ public class AnthropicChatModelProvider implements ChatModelProvider<AnthropicCh
         // Makes sure the "model" is always in the config even if it is not configured.
         result.putIfAbsent("model", "");
         return result;
+    }
+
+    @Nullable
+    @Override
+    public String getDisplayName(@Nullable Map<String, Object> options) {
+        return "Anthropic";
     }
 
     public record AnthropicWrapper(AnthropicChatModel model) implements ChatLanguageModel {

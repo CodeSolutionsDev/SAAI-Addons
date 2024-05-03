@@ -5,6 +5,7 @@ import dev.bluetree242.serverassistantai.api.registry.chatmodel.ChatModelProvide
 import dev.langchain4j.model.azure.AzureOpenAiChatModel;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -19,7 +20,8 @@ public class AzureOpenAIChatModelProvider implements ChatModelProvider<AzureOpen
     @Override
     public AzureOpenAiChatModel provide(@NotNull Map<String, Object> options) {
         AzureOpenAICredentials credentials = api.getCredentialsRegistry().getConfigured(AzureOpenAIAddon.NAME, AzureOpenAICredentials.Loader.class);
-        if (credentials == null) throw new IllegalStateException("Azure OpenAI credentials is null. This is unexpected behavior.");
+        if (credentials == null)
+            throw new IllegalStateException("Azure OpenAI credentials is null. This is unexpected behavior.");
         Integer maxTokens = (Integer) options.get("max_tokens");
         String deploymentName = (String) options.get("deployment_name");
         //noinspection unchecked
@@ -60,5 +62,11 @@ public class AzureOpenAIChatModelProvider implements ChatModelProvider<AzureOpen
         result.putIfAbsent("service_version", "");
         result.putIfAbsent("endpoint", "");
         return result;
+    }
+
+    @Nullable
+    @Override
+    public String getDisplayName(@Nullable Map<String, Object> options) {
+        return "Azure OpenAI";
     }
 }
