@@ -39,19 +39,30 @@ Here are the currently available addons for ServerAssistantAI:
 
 #### Anthropic Addon (LLM)
 
-- Description: Claude is a family of foundational AI models that can be used in a variety of applications. This addon allows ServerAssistantAI to utilize Anthropic's Claude models for LLM functionality.
+-   Description: Claude is a family of foundational AI models that can be used in a variety of applications. This addon allows ServerAssistantAI to utilize Anthropic's Claude models for LLM functionality.
+-   Credentials: [`AnthropicCredentialsLoader.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/anthropic/src/main/java/dev/bluetree242/saaiaddons/anthropic/AnthropicCredentialsLoader.java) - Class responsible for loading Anthropic credentials.
+-   Chat Model: [`AnthropicChatModelProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/anthropic/src/main/java/dev/bluetree242/saaiaddons/anthropic/AnthropicChatModelProvider.java) - Implementation of the chat model provider for Anthropic.
 
 #### Azure OpenAI Addon (LLM & Embedding)
 
-- Description: Azure OpenAI Service is a fully managed service that allows developers to easily integrate OpenAI models into their applications. This addon enables ServerAssistantAI to utilize Azure OpenAI for both LLM and embedding capabilities.
+-   Description: Azure OpenAI Service is a fully managed service that allows developers to easily integrate OpenAI models into their applications. This addon enables ServerAssistantAI to utilize Azure OpenAI for both LLM and embedding capabilities.
+-   Credentials: [`AzureOpenAICredentials.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/azure-openai/src/main/java/dev/bluetree242/saaiaddons/azure/AzureOpenAICredentials.java) - Class responsible for loading Azure OpenAI credentials.
+-   Chat Model: [`AzureOpenAIChatModelProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/azure-openai/src/main/java/dev/bluetree242/saaiaddons/azure/AzureOpenAIChatModelProvider.java) - Implementation of the chat model provider for Azure OpenAI.
+-   Embedding: [`AzureOpenAIEmbeddingProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/azure-openai/src/main/java/dev/bluetree242/saaiaddons/azure/AzureOpenAIEmbeddingProvider.java) - Implementation of the embedding provider for Azure OpenAI.
 
 #### HuggingFace Addon (LLM & Embedding)
 
-- Description: HuggingFace provides access to thousands of open-source models for free through the HuggingFace Inference API. This addon integrates HuggingFace models into ServerAssistantAI for both LLM and embedding functionality.
+-   Description: HuggingFace provides access to thousands of open-source models for free through the HuggingFace Inference API. This addon integrates HuggingFace models into ServerAssistantAI for both LLM and embedding functionality.
+-   Credentials: [`HuggingFaceCredentialsLoader.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/hugging-face/src/main/java/dev/bluetree242/saaiaddons/huggingface/HuggingFaceCredentialsLoader.java) - Class responsible for loading HuggingFace credentials.
+-   Chat Model: [`HuggingFaceChatModelProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/hugging-face/src/main/java/dev/bluetree242/saaiaddons/huggingface/HuggingFaceChatModelProvider.java) - Implementation of the chat model provider for HuggingFace.
+-   Embedding: [`HuggingFaceEmbeddingProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/hugging-face/src/main/java/dev/bluetree242/saaiaddons/huggingface/HuggingFaceEmbeddingProvider.java) - Implementation of the embedding provider for HuggingFace.
 
 #### Mistral AI Addon (LLM & Embedding)
 
-- Description: Mistral AI currently provides three types of access to Large Language Models. An API providing pay-as-you-go access to our latest models, Cloud-based deployments, Open source models available under the Apache 2.0 License, available on Hugging Face or directly from the documentation. This addon integrates Mistral AI models into ServerAssistantAI for both LLM and embedding.
+-   Description: Mistral AI currently provides three types of access to Large Language Models. An API providing pay-as-you-go access to our latest models, Cloud-based deployments, Open source models available under the Apache 2.0 License, available on Hugging Face or directly from the documentation. This addon integrates Mistral AI models into ServerAssistantAI for both LLM and embedding.
+-   Credentials: [`MistralAICredentialsLoader.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/mistral-ai/src/main/java/dev/bluetree242/saaiaddons/mistralai/MistralAICredentialsLoader.java) - Class responsible for loading Mistral AI credentials.
+-   Chat Model: [`MistralAIChatModelProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/mistral-ai/src/main/java/dev/bluetree242/saaiaddons/mistralai/MistralAIChatModelProvider.java) - Implementation of the chat model provider for Mistral AI.
+-   Embedding: [`MistralAIEmbeddingProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/mistral-ai/src/main/java/dev/bluetree242/saaiaddons/mistralai/MistralAIEmbeddingProvider.java) - Implementation of the embedding provider for Mistral AI.
 
 More addons will be added over time, so stay tuned for updates!
 
