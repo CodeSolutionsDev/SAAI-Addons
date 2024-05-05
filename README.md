@@ -74,7 +74,7 @@ The API is subject to change in future versions as we improve ServerAssistantAI 
 
 ### JavaDoc
 
-[![](https://img.shields.io/badge/JavaDoc-Released_API-4ac51c)](https://repo.bluetree242.dev/javadoc/releases/dev/bluetree242/serverassistantai/api/1.0/raw/index.html)
+[![](https://img.shields.io/badge/JavaDoc-Released_API-4ac51c)](https://repo.bluetree242.dev/javadoc/releases/dev/bluetree242/serverassistantai/api/1.1/raw/index.html)
 
 [![](https://img.shields.io/badge/JavaDoc-Development_API-FF7F7F)](https://repo.bluetree242.dev/javadoc/snapshots/dev/bluetree242/serverassistantai/api/1.1-SNAPSHOT/raw/index.html)
 
@@ -90,7 +90,7 @@ ServerAssistantAI's API is public and accessible to all developers, even if they
 
 ## License
 
-This repository is licensed under the GNU General Public License v3.0. See the [LICENSE](https://github.com/CodeSolutionsDev/SAAI-Addons?tab=GPL-3.0-1-ov-file) file for more information.
+This repository is licensed under the GNU General Public License v3.0. See the [LICENSE](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/LICENSE) file for more information.
 
 ## Contributing
 
