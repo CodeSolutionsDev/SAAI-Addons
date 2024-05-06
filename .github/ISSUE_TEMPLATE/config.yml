@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "Feature Request"
+    about: "Suggest new features or improvements for SAAI-Addons in the `#suggestions` channel through Discord."
+    url: "https://code-solutions.dev/discord"
+  - name: "Ticket Support"
+    about: "Create a support ticket for assistance with SAAI-Addons in the `#ticket-support` channel through Discord."
+    url: "https://code-solutions.dev/discord"
+  - name: "Community Support"
+    about: "Get help from the community in the `#saai-support` channel through Discord."
+    url: "https://code-solutions.dev/discord"
