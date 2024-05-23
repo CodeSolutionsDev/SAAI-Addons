@@ -9,7 +9,7 @@ spigot = "1.16.5-R0.1-SNAPSHOT"
 serverassistantai = "1.2"
 
 # Dependencies
-langchain4j = "0.30.0"
+langchain4j = "0.31.0"
 
 # Annotations
 lombok = "1.18.32"
