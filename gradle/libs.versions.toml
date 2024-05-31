@@ -10,6 +10,7 @@ serverassistantai = "1.2"
 
 # Dependencies
 langchain4j = "0.30.0"
+retrofit2 = "2.9.0"
 
 # Annotations
 lombok = "1.18.32"
@@ -28,6 +29,8 @@ langchain4j-azureopenai = { group = "dev.langchain4j", name = "langchain4j-azure
 langchain4j-vertexai = { group = "dev.langchain4j", name = "langchain4j-vertex-ai-gemini", version.ref = "langchain4j" }
 langchain4j-mistralai = { group = "dev.langchain4j", name = "langchain4j-mistral-ai", version.ref = "langchain4j" }
 langchain4j-huggingface = { group = "dev.langchain4j", name = "langchain4j-hugging-face", version.ref = "langchain4j" }
+
+retrofit2 = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit2" }
 
 # Annotations
 lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }

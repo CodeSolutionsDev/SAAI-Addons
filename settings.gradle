@@ -3,4 +3,5 @@ include 'anthropic'
 include 'azure-openai'
 include 'mistral-ai'
 include 'hugging-face'
+include 'google-aistudio'
 
