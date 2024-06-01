@@ -50,6 +50,14 @@ Here are the currently available addons for ServerAssistantAI:
 -   Chat Model: [`AzureOpenAIChatModelProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/azure-openai/src/main/java/dev/bluetree242/saaiaddons/azure/AzureOpenAIChatModelProvider.java) - Implementation of the chat model provider for Azure OpenAI.
 -   Embedding: [`AzureOpenAIEmbeddingProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/azure-openai/src/main/java/dev/bluetree242/saaiaddons/azure/AzureOpenAIEmbeddingProvider.java) - Implementation of the embedding provider for Azure OpenAI.
 
+#### Google AI Studio Addon (LLM)
+
+-   Description: Google AI Studio is the fastest way to start building with Google's most advanced Gemini generative AI models. This addon allows ServerAssistantAI to utilize Google AI Studio models for LLM functionality.
+-   Credentials: [`GoogleAIStudioCredentialsLoader.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/google-aistudio/src/main/java/dev/bluetree242/saaiaddons/aistudio/GoogleAIStudioCredentialsLoader.java) - Class responsible for loading Google AI Studio credentials.
+-   Chat Model: [`GoogleAIStudioChatModelProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/google-aistudio/src/main/java/dev/bluetree242/saaiaddons/aistudio/GoogleAIStudioChatModelProvider.java) - Implementation of the chat model provider for Google AI Studio.
+
+This addon's code can be used as an example to add another AI Provider's LLM for ServerAssistantAI using their API.
+
 #### HuggingFace Addon (LLM & Embedding)
 
 -   Description: HuggingFace provides access to thousands of open-source models for free through the HuggingFace Inference API. This addon integrates HuggingFace models into ServerAssistantAI for both LLM and embedding functionality.
