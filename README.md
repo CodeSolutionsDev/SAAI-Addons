@@ -46,15 +46,15 @@ Here are the currently available addons for ServerAssistantAI:
 #### Azure OpenAI Addon (LLM & Embedding)
 
 -   Description: Azure OpenAI Service is a fully managed service that allows developers to easily integrate OpenAI models into their applications. This addon enables ServerAssistantAI to utilize Azure OpenAI for both LLM and embedding capabilities.
--   Credentials: [`AzureOpenAICredentials.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/azure-openai/src/main/java/dev/bluetree242/saaiaddons/azure/AzureOpenAICredentials.java) - Class responsible for loading Azure OpenAI credentials.
--   Chat Model: [`AzureOpenAIChatModelProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/azure-openai/src/main/java/dev/bluetree242/saaiaddons/azure/AzureOpenAIChatModelProvider.java) - Implementation of the chat model provider for Azure OpenAI.
--   Embedding: [`AzureOpenAIEmbeddingProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/azure-openai/src/main/java/dev/bluetree242/saaiaddons/azure/AzureOpenAIEmbeddingProvider.java) - Implementation of the embedding provider for Azure OpenAI.
+-   Credentials: [`AzureOpenAiCredentials.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/azure-openai/src/main/java/dev/bluetree242/saaiaddons/azure/AzureOpenAiCredentials.java) - Class responsible for loading Azure OpenAI credentials.
+-   Chat Model: [`AzureOpenAiChatModelProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/azure-openai/src/main/java/dev/bluetree242/saaiaddons/azure/AzureOpenAiChatModelProvider.java) - Implementation of the chat model provider for Azure OpenAI.
+-   Embedding: [`AzureOpenAiEmbeddingProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/azure-openai/src/main/java/dev/bluetree242/saaiaddons/azure/AzureOpenAiEmbeddingProvider.java) - Implementation of the embedding provider for Azure OpenAI.
 
 #### Google AI Studio Addon (LLM)
 
 -   Description: Google AI Studio is the fastest way to start building with Google's most advanced Gemini generative AI models. This addon allows ServerAssistantAI to utilize Google AI Studio models for LLM functionality.
--   Credentials: [`GoogleAIStudioCredentialsLoader.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/google-aistudio/src/main/java/dev/bluetree242/saaiaddons/aistudio/GoogleAIStudioCredentialsLoader.java) - Class responsible for loading Google AI Studio credentials.
--   Chat Model: [`GoogleAIStudioChatModelProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/google-aistudio/src/main/java/dev/bluetree242/saaiaddons/aistudio/GoogleAIStudioChatModelProvider.java) - Implementation of the chat model provider for Google AI Studio.
+-   Credentials: [`GoogleAiStudioCredentialsLoader.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/google-aistudio/src/main/java/dev/bluetree242/saaiaddons/aistudio/GoogleAiStudioCredentialsLoader.java) - Class responsible for loading Google AI Studio credentials.
+-   Chat Model: [`GoogleAiStudioChatModelProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/google-aistudio/src/main/java/dev/bluetree242/saaiaddons/aistudio/GoogleAiStudioChatModelProvider.java) - Implementation of the chat model provider for Google AI Studio.
 
 This addon's code can be used as an example to add another AI Provider's LLM for ServerAssistantAI using their API.
 
@@ -68,9 +68,9 @@ This addon's code can be used as an example to add another AI Provider's LLM for
 #### Mistral AI Addon (LLM & Embedding)
 
 -   Description: Mistral AI currently provides three types of access to Large Language Models. An API providing pay-as-you-go access to our latest models, Cloud-based deployments, Open source models available under the Apache 2.0 License, available on Hugging Face or directly from the documentation. This addon integrates Mistral AI models into ServerAssistantAI for both LLM and embedding.
--   Credentials: [`MistralAICredentialsLoader.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/mistral-ai/src/main/java/dev/bluetree242/saaiaddons/mistralai/MistralAICredentialsLoader.java) - Class responsible for loading Mistral AI credentials.
--   Chat Model: [`MistralAIChatModelProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/mistral-ai/src/main/java/dev/bluetree242/saaiaddons/mistralai/MistralAIChatModelProvider.java) - Implementation of the chat model provider for Mistral AI.
--   Embedding: [`MistralAIEmbeddingProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/mistral-ai/src/main/java/dev/bluetree242/saaiaddons/mistralai/MistralAIEmbeddingProvider.java) - Implementation of the embedding provider for Mistral AI.
+-   Credentials: [`MistralAiCredentialsLoader.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/mistral-ai/src/main/java/dev/bluetree242/saaiaddons/mistralai/MistralAiCredentialsLoader.java) - Class responsible for loading Mistral AI credentials.
+-   Chat Model: [`MistralAiChatModelProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/mistral-ai/src/main/java/dev/bluetree242/saaiaddons/mistralai/MistralAiChatModelProvider.java) - Implementation of the chat model provider for Mistral AI.
+-   Embedding: [`MistralAiEmbeddingProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/mistral-ai/src/main/java/dev/bluetree242/saaiaddons/mistralai/MistralAiEmbeddingProvider.java) - Implementation of the embedding provider for Mistral AI.
 
 More addons will be added over time, so stay tuned for updates!
 

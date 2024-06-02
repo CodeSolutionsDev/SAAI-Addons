@@ -6,14 +6,14 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
-public record AzureOpenAICredentials(@NotNull String apiKey, @NotNull String serviceVersion, @NotNull String endpoint) {
+public record AzureOpenAiCredentials(@NotNull String apiKey, @NotNull String serviceVersion, @NotNull String endpoint) {
 
 
-    public static class Loader implements CredentialsLoader<AzureOpenAICredentials> {
+    public static class Loader implements CredentialsLoader<AzureOpenAiCredentials> {
 
         @NotNull
         @Override
-        public AzureOpenAICredentials load(@NotNull Map<String, Object> options) {
+        public AzureOpenAiCredentials load(@NotNull Map<String, Object> options) {
             String apiKey = (String) options.get("api_key");
             if (apiKey.isBlank()) throw new MissingCredentialsException("Azure OpenAI api key");
             String serviceVersion = (String) options.get("service_version");
@@ -22,7 +22,7 @@ public record AzureOpenAICredentials(@NotNull String apiKey, @NotNull String ser
                 throw new MissingCredentialsException("Azure OpenAI service version");
             if (endpoint.isBlank())
                 throw new MissingCredentialsException("Azure OpenAI endpoint");
-            return new AzureOpenAICredentials(apiKey, serviceVersion, endpoint);
+            return new AzureOpenAiCredentials(apiKey, serviceVersion, endpoint);
         }
 
         @NotNull

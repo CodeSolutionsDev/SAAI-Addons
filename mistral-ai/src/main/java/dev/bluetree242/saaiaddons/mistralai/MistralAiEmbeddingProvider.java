@@ -1,8 +1,8 @@
 package dev.bluetree242.saaiaddons.mistralai;
 
 import dev.bluetree242.serverassistantai.api.ServerAssistantAIAPI;
-import dev.bluetree242.serverassistantai.api.registry.chatmodel.ChatModelProvider;
-import dev.langchain4j.model.mistralai.MistralAiChatModel;
+import dev.bluetree242.serverassistantai.api.registry.embedding.EmbeddingModelProvider;
+import dev.langchain4j.model.mistralai.MistralAiEmbeddingModel;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -11,23 +11,21 @@ import java.time.Duration;
 import java.util.Map;
 
 @RequiredArgsConstructor
-public class MistralAIChatModelProvider implements ChatModelProvider<MistralAiChatModel> {
+public class MistralAiEmbeddingProvider implements EmbeddingModelProvider<MistralAiEmbeddingModel> {
     private final ServerAssistantAIAPI api;
 
     @NotNull
     @Override
-    public MistralAiChatModel provide(@NotNull Map<String, Object> options) {
+    public MistralAiEmbeddingModel provide(@NotNull Map<String, Object> options) {
         String model = (String) options.get("model");
-        Integer maxTokens = (Integer) options.get("max_tokens");
         Integer maxRetries = (Integer) options.get("max_retries");
         if (model.isBlank()) throw new IllegalStateException("Please set the model for MistralAI chat model.");
-        return MistralAiChatModel.builder()
+        return MistralAiEmbeddingModel.builder()
                 .modelName(model)
                 .baseUrl((String) options.get("base_url"))
                 .timeout(Duration.ofSeconds(Long.parseLong(options.get("timeout").toString())))
-                .maxTokens(maxTokens == 0 ? null : maxTokens)
                 .maxRetries(maxRetries)
-                .apiKey(api.getCredentialsRegistry().getConfigured(MistralAIAddon.NAME, MistralAICredentialsLoader.class))
+                .apiKey(api.getCredentialsRegistry().getConfigured(MistralAiAddon.NAME, MistralAiCredentialsLoader.class))
                 .build();
     }
 
@@ -38,7 +36,6 @@ public class MistralAIChatModelProvider implements ChatModelProvider<MistralAiCh
                 "base_url", "https://api.mistral.ai/v1",
                 "model", "",
                 "timeout", 15L,
-                "max_tokens", 0,
                 "max_retries", 3
         );
     }
@@ -46,7 +43,7 @@ public class MistralAIChatModelProvider implements ChatModelProvider<MistralAiCh
     @NotNull
     @Override
     public Map<String, Object> export(@NotNull Map<String, Object> options) {
-        Map<String, Object> result = ChatModelProvider.super.export(options);
+        Map<String, Object> result = EmbeddingModelProvider.super.export(options);
         // Makes sure the "model" is always in the config even if it is not configured.
         result.putIfAbsent("model", "");
         return result;

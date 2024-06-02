@@ -11,13 +11,13 @@ import java.time.Duration;
 import java.util.Map;
 
 @RequiredArgsConstructor
-public class AzureOpenAIEmbeddingProvider implements EmbeddingModelProvider<AzureOpenAiEmbeddingModel> {
+public class AzureOpenAiEmbeddingProvider implements EmbeddingModelProvider<AzureOpenAiEmbeddingModel> {
     private final ServerAssistantAIAPI api;
 
     @NotNull
     @Override
     public AzureOpenAiEmbeddingModel provide(@NotNull Map<String, Object> options) {
-        AzureOpenAICredentials credentials = api.getCredentialsRegistry().getConfigured(AzureOpenAIAddon.NAME, AzureOpenAICredentials.Loader.class);
+        AzureOpenAiCredentials credentials = api.getCredentialsRegistry().getConfigured(AzureOpenAiAddon.NAME, AzureOpenAiCredentials.Loader.class);
         if (credentials == null)
             throw new IllegalStateException("Azure OpenAI credentials is null. This is unexpected behavior.");
         String deploymentName = (String) options.get("deployment_name");

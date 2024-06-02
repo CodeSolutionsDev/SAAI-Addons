@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
-public class MistralAICredentialsLoader implements CredentialsLoader<String> {
+public class MistralAiCredentialsLoader implements CredentialsLoader<String> {
     @NotNull
     @Override
     public String load(@NotNull Map<String, Object> options) {

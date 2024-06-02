@@ -4,7 +4,7 @@ import dev.bluetree242.serverassistantai.api.ServerAssistantAIAPI;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class AzureOpenAIAddon extends JavaPlugin {
+public class AzureOpenAiAddon extends JavaPlugin {
     public static final String NAME = "azure-openai";
     private ServerAssistantAIAPI api;
 
@@ -20,8 +20,8 @@ public class AzureOpenAIAddon extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        api.getCredentialsRegistry().register(NAME, new AzureOpenAICredentials.Loader());
-        api.getChatModelRegistry().register(NAME, new AzureOpenAIChatModelProvider(api));
-        api.getEmbeddingModelRegistry().register(NAME, new AzureOpenAIEmbeddingProvider(api));
+        api.getCredentialsRegistry().register(NAME, new AzureOpenAiCredentials.Loader());
+        api.getChatModelRegistry().register(NAME, new AzureOpenAiChatModelProvider(api));
+        api.getEmbeddingModelRegistry().register(NAME, new AzureOpenAiEmbeddingProvider(api));
     }
 }

@@ -4,7 +4,7 @@ import dev.bluetree242.serverassistantai.api.ServerAssistantAIAPI;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class MistralAIAddon extends JavaPlugin {
+public class MistralAiAddon extends JavaPlugin {
     public static final String NAME = "mistralai";
     private ServerAssistantAIAPI api;
 
@@ -20,8 +20,8 @@ public class MistralAIAddon extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        api.getCredentialsRegistry().register(NAME, new MistralAICredentialsLoader());
-        api.getChatModelRegistry().register(NAME, new MistralAIChatModelProvider(api));
-        api.getEmbeddingModelRegistry().register(NAME, new MistralAIEmbeddingProvider(api));
+        api.getCredentialsRegistry().register(NAME, new MistralAiCredentialsLoader());
+        api.getChatModelRegistry().register(NAME, new MistralAiChatModelProvider(api));
+        api.getEmbeddingModelRegistry().register(NAME, new MistralAiEmbeddingProvider(api));
     }
 }

@@ -10,12 +10,12 @@ import org.jetbrains.annotations.Nullable;
 import java.time.Duration;
 import java.util.Map;
 @RequiredArgsConstructor
-public class GoogleAIStudioEmbeddingProvider implements EmbeddingModelProvider<AiStudioEmbeddingModel> {
+public class GoogleAiStudioEmbeddingProvider implements EmbeddingModelProvider<AiStudioEmbeddingModel> {
     private final ServerAssistantAIAPI api;
 
     @Override
     public @NotNull AiStudioEmbeddingModel provide(@NotNull Map<String, Object> options) {
-        String apiKey = api.getCredentialsRegistry().getConfigured(GoogleAIStudioAddon.NAME, GoogleAIStudioCredentialsLoader.class);
+        String apiKey = api.getCredentialsRegistry().getConfigured(GoogleAiStudioAddon.NAME, GoogleAiStudioCredentialsLoader.class);
         String model = (String) options.get("model");
         if (model.isBlank()) throw new IllegalStateException("Please set the model for Google AI Studio embedding model.");
         return new AiStudioEmbeddingModel(apiKey, model, Duration.ofSeconds(Long.parseLong(options.get("timeout").toString())));

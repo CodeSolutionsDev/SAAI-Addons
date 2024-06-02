@@ -4,7 +4,7 @@ import dev.bluetree242.serverassistantai.api.ServerAssistantAIAPI;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class GoogleAIStudioAddon extends JavaPlugin {
+public class GoogleAiStudioAddon extends JavaPlugin {
     public static final String NAME = "google-aistudio";
     private ServerAssistantAIAPI api;
 
@@ -20,8 +20,8 @@ public class GoogleAIStudioAddon extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        api.getCredentialsRegistry().register(NAME, new GoogleAIStudioCredentialsLoader());
-        api.getChatModelRegistry().register(NAME, new GoogleAIStudioChatModelProvider(api));
-        api.getEmbeddingModelRegistry().register(NAME, new GoogleAIStudioEmbeddingProvider(api));
+        api.getCredentialsRegistry().register(NAME, new GoogleAiStudioCredentialsLoader());
+        api.getChatModelRegistry().register(NAME, new GoogleAiStudioChatModelProvider(api));
+        api.getEmbeddingModelRegistry().register(NAME, new GoogleAiStudioEmbeddingProvider(api));
     }
 }

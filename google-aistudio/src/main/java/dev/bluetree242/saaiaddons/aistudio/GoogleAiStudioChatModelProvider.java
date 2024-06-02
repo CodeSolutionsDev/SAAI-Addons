@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RequiredArgsConstructor
-public class GoogleAIStudioChatModelProvider implements ChatModelProvider<AiStudioChatLanguageModel> {
+public class GoogleAiStudioChatModelProvider implements ChatModelProvider<AiStudioChatLanguageModel> {
     private final ServerAssistantAIAPI api;
 
     @NotNull
@@ -29,7 +29,7 @@ public class GoogleAIStudioChatModelProvider implements ChatModelProvider<AiStud
                 .timeout(Duration.ofSeconds(Long.parseLong(options.get("timeout").toString())))
                 .maxOutputTokens(maxTokens == 0 ? null : maxTokens)
                 .stopSequences(stop)
-                .apiKey(api.getCredentialsRegistry().getConfigured(GoogleAIStudioAddon.NAME, GoogleAIStudioCredentialsLoader.class))
+                .apiKey(api.getCredentialsRegistry().getConfigured(GoogleAiStudioAddon.NAME, GoogleAiStudioCredentialsLoader.class))
                 .build();
     }
 

@@ -13,13 +13,13 @@ import java.util.List;
 import java.util.Map;
 
 @RequiredArgsConstructor
-public class AzureOpenAIChatModelProvider implements ChatModelProvider<AzureOpenAiChatModel> {
+public class AzureOpenAiChatModelProvider implements ChatModelProvider<AzureOpenAiChatModel> {
     private final ServerAssistantAIAPI api;
 
     @NotNull
     @Override
     public AzureOpenAiChatModel provide(@NotNull Map<String, Object> options) {
-        AzureOpenAICredentials credentials = api.getCredentialsRegistry().getConfigured(AzureOpenAIAddon.NAME, AzureOpenAICredentials.Loader.class);
+        AzureOpenAiCredentials credentials = api.getCredentialsRegistry().getConfigured(AzureOpenAiAddon.NAME, AzureOpenAiCredentials.Loader.class);
         if (credentials == null)
             throw new IllegalStateException("Azure OpenAI credentials is null. This is unexpected behavior.");
         Integer maxTokens = (Integer) options.get("max_tokens");

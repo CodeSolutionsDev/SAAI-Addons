@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
-public class GoogleAIStudioCredentialsLoader implements CredentialsLoader<String> {
+public class GoogleAiStudioCredentialsLoader implements CredentialsLoader<String> {
 
     @NotNull
     @Override
