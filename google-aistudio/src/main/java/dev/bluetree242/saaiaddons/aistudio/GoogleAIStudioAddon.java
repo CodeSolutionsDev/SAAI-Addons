@@ -22,5 +22,6 @@ public class GoogleAIStudioAddon extends JavaPlugin {
     public void onEnable() {
         api.getCredentialsRegistry().register(NAME, new GoogleAIStudioCredentialsLoader());
         api.getChatModelRegistry().register(NAME, new GoogleAIStudioChatModelProvider(api));
+        api.getEmbeddingModelRegistry().register(NAME, new GoogleAIStudioEmbeddingProvider(api));
     }
 }

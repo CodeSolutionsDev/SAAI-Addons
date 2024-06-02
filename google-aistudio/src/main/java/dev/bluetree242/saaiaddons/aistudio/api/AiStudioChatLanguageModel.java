@@ -1,7 +1,7 @@
 package dev.bluetree242.saaiaddons.aistudio.api;
 
 import dev.bluetree242.saaiaddons.aistudio.api.request.ChatRequest;
-import dev.bluetree242.saaiaddons.aistudio.api.request.ChatResponse;
+import dev.bluetree242.saaiaddons.aistudio.api.response.ChatResponse;
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.ChatMessage;
 import dev.langchain4j.model.chat.ChatLanguageModel;

@@ -1,4 +1,4 @@
-package dev.bluetree242.saaiaddons.aistudio.api.request;
+package dev.bluetree242.saaiaddons.aistudio.api.response;
 
 import dev.bluetree242.saaiaddons.aistudio.api.Content;
 import dev.langchain4j.model.output.TokenUsage;

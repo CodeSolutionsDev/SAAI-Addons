@@ -3,7 +3,9 @@ package dev.bluetree242.saaiaddons.aistudio.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dev.bluetree242.saaiaddons.aistudio.api.request.ChatRequest;
-import dev.bluetree242.saaiaddons.aistudio.api.request.ChatResponse;
+import dev.bluetree242.saaiaddons.aistudio.api.request.EmbedRequest;
+import dev.bluetree242.saaiaddons.aistudio.api.response.ChatResponse;
+import dev.bluetree242.saaiaddons.aistudio.api.response.EmbedResponse;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -50,9 +52,20 @@ public class AiStudioClient {
 
     public ChatResponse chat(ChatRequest request, String model) {
         try {
-            retrofit2.Response<ChatResponse> retrofitResponse
-                    = api.chat(request, model).execute();
+            retrofit2.Response<ChatResponse> retrofitResponse = api.chat(request, model).execute();
+            if (retrofitResponse.isSuccessful()) {
+                return retrofitResponse.body();
+            } else {
+                throw toException(retrofitResponse);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    public EmbedResponse embed(EmbedRequest request, String model) {
+        try {
+            retrofit2.Response<EmbedResponse> retrofitResponse = api.embed(request, model).execute();
             if (retrofitResponse.isSuccessful()) {
                 return retrofitResponse.body();
             } else {
