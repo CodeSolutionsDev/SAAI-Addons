@@ -9,7 +9,7 @@ description = "ServerAssistantAI addon for Google AI Studio model support."
 
 bukkit {
     name = "SAAI-GoogleAIStudio"
-    main = "$pckg.aistudio.GoogleAIStudioAddon"
+    main = "$pckg.aistudio.GoogleAiStudioAddon"
 }
 
 dependencies {

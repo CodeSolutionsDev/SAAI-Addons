@@ -10,7 +10,7 @@ description = "ServerAssistantAI addon for Mistral AI support."
 
 bukkit {
     name = "SAAI-MistralAI"
-    main = "$pckg.mistralai.MistralAIAddon"
+    main = "$pckg.mistralai.MistralAiAddon"
 }
 
 dependencies {

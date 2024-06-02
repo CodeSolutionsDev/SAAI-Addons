@@ -10,7 +10,7 @@ description = "ServerAssistantAI addon for Azure OpenAI model support."
 
 bukkit {
     name = "SAAI-AzureOpenAI"
-    main = "$pckg.azure.AzureOpenAIAddon"
+    main = "$pckg.azure.AzureOpenAiAddon"
 }
 
 dependencies {
