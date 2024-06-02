@@ -45,14 +45,14 @@ Here are the currently available addons for ServerAssistantAI:
 
 #### Azure OpenAI Addon (LLM & Embedding)
 
--   Description: Azure OpenAI Service is a fully managed service that allows developers to easily integrate OpenAI models into their applications. This addon enables ServerAssistantAI to utilize Azure OpenAI for both LLM and embedding capabilities.
+-   Description: Azure OpenAI Service is a fully managed service that allows developers to easily integrate OpenAI models into their applications. This addon integrates Azure OpenAI models into ServerAssistantAI for both LLM and embedding functionality.
 -   Credentials: [`AzureOpenAiCredentials.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/azure-openai/src/main/java/dev/bluetree242/saaiaddons/azure/AzureOpenAiCredentials.java) - Class responsible for loading Azure OpenAI credentials.
 -   Chat Model: [`AzureOpenAiChatModelProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/azure-openai/src/main/java/dev/bluetree242/saaiaddons/azure/AzureOpenAiChatModelProvider.java) - Implementation of the chat model provider for Azure OpenAI.
 -   Embedding: [`AzureOpenAiEmbeddingProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/azure-openai/src/main/java/dev/bluetree242/saaiaddons/azure/AzureOpenAiEmbeddingProvider.java) - Implementation of the embedding provider for Azure OpenAI.
 
-#### Google AI Studio Addon (LLM)
+#### Google AI Studio Addon (LLM & Embedding)
 
--   Description: Google AI Studio is the fastest way to start building with Google's most advanced Gemini generative AI models. This addon allows ServerAssistantAI to utilize Google AI Studio models for LLM functionality.
+-   Description: Google AI Studio is the fastest way to start building with Google's most advanced Gemini generative AI models. This addon integrates Google AI Studio models into ServerAssistantAI for both LLM and embedding functionality.
 -   Credentials: [`GoogleAiStudioCredentialsLoader.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/google-aistudio/src/main/java/dev/bluetree242/saaiaddons/aistudio/GoogleAiStudioCredentialsLoader.java) - Class responsible for loading Google AI Studio credentials.
 -   Chat Model: [`GoogleAiStudioChatModelProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/google-aistudio/src/main/java/dev/bluetree242/saaiaddons/aistudio/GoogleAiStudioChatModelProvider.java) - Implementation of the chat model provider for Google AI Studio.
 -   Embedding: [`GoogleAiStudioEmbeddingProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/google-aistudio/src/main/java/dev/bluetree242/saaiaddons/aistudio/GoogleAiStudioEmbeddingProvider.java) - Implementation of the embedding model provider for Google AI Studio.
