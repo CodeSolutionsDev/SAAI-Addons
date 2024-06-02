@@ -55,6 +55,7 @@ Here are the currently available addons for ServerAssistantAI:
 -   Description: Google AI Studio is the fastest way to start building with Google's most advanced Gemini generative AI models. This addon allows ServerAssistantAI to utilize Google AI Studio models for LLM functionality.
 -   Credentials: [`GoogleAiStudioCredentialsLoader.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/google-aistudio/src/main/java/dev/bluetree242/saaiaddons/aistudio/GoogleAiStudioCredentialsLoader.java) - Class responsible for loading Google AI Studio credentials.
 -   Chat Model: [`GoogleAiStudioChatModelProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/google-aistudio/src/main/java/dev/bluetree242/saaiaddons/aistudio/GoogleAiStudioChatModelProvider.java) - Implementation of the chat model provider for Google AI Studio.
+-   Embedding: [`GoogleAiStudioEmbeddingProvider.java`](https://github.com/CodeSolutionsDev/SAAI-Addons/blob/main/google-aistudio/src/main/java/dev/bluetree242/saaiaddons/aistudio/GoogleAiStudioEmbeddingProvider.java) - Implementation of the embedding model provider for Google AI Studio.
 
 This addon's code can be used as an example to add another AI Provider's LLM for ServerAssistantAI using their API.
 
