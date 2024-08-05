@@ -6,7 +6,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class AnthropicAddon extends JavaPlugin {
     public static final String NAME = "anthropic";
-    private ServerAssistantAIAPI api;
 
     @Override
     public void onLoad() {
@@ -14,12 +13,7 @@ public class AnthropicAddon extends JavaPlugin {
         if (registration == null) {
             throw new IllegalStateException("Registered service provider is null");
         }
-        api = registration.getProvider();
-        api.waitForPlugin(this);
-    }
-
-    @Override
-    public void onEnable() {
+        ServerAssistantAIAPI api = registration.getProvider();
         api.getCredentialsRegistry().register(NAME, new AnthropicCredentialsLoader());
         api.getChatModelRegistry().register(NAME, new AnthropicChatModelProvider(api));
     }

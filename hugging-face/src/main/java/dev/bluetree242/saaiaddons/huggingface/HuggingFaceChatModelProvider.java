@@ -1,6 +1,8 @@
 package dev.bluetree242.saaiaddons.huggingface;
 
 import dev.bluetree242.serverassistantai.api.ServerAssistantAIAPI;
+import dev.bluetree242.serverassistantai.api.config.option.OptionMap;
+import dev.bluetree242.serverassistantai.api.registry.chatmodel.ChatModelContext;
 import dev.bluetree242.serverassistantai.api.registry.chatmodel.ChatModelProvider;
 import dev.langchain4j.model.huggingface.HuggingFaceChatModel;
 import lombok.RequiredArgsConstructor;
@@ -16,19 +18,18 @@ public class HuggingFaceChatModelProvider implements ChatModelProvider<HuggingFa
 
     @NotNull
     @Override
-    public HuggingFaceChatModel provide(@NotNull Map<String, Object> options) {
+    public HuggingFaceChatModel provide(@NotNull ChatModelContext context) {
+        OptionMap options = context.options();
         String accessToken = api.getCredentialsRegistry().getConfigured(HuggingFaceAddon.NAME, HuggingFaceCredentialsLoader.class);
-        Integer maxNewTokens = (Integer) options.get("max_new_tokens");
-        String model = (String) options.get("model");
-        double temperature = Double.parseDouble(options.get("temperature").toString());
+        String model = options.getString("model");
         if (model.isBlank()) throw new IllegalStateException("Please set the model for hugging face chat model.");
         return new HuggingFaceChatModel.Builder().accessToken(accessToken)
                 .modelId(model)
-                .timeout(Duration.ofSeconds(Long.parseLong(options.get("timeout").toString())))
+                .timeout(Duration.ofSeconds(options.getLong("timeout")))
                 .waitForModel(true)
                 .returnFullText(false)
-                .maxNewTokens(maxNewTokens == 0 ? null : maxNewTokens)
-                .temperature(temperature == 0 ? null : temperature)
+                .maxNewTokens(options.getIntegerOrDefault("max_new_tokens", i -> i == 0, null))
+                .temperature(options.getDoubleOrDefault("temperature", i -> i == 0, null))
                 .build();
     }
 
@@ -45,15 +46,15 @@ public class HuggingFaceChatModelProvider implements ChatModelProvider<HuggingFa
 
     @NotNull
     @Override
-    public Map<String, Object> export(@NotNull Map<String, Object> options) {
-        Map<String, Object> result = ChatModelProvider.super.export(options);
+    public Map<String, Object> export(@NotNull ChatModelContext context) {
+        Map<String, Object> result = ChatModelProvider.super.export(context);
         result.putIfAbsent("model", "");
         return result;
     }
 
     @Nullable
     @Override
-    public String getDisplayName(@Nullable Map<String, Object> options) {
+    public String getDisplayName(@Nullable ChatModelContext context) {
         return "HuggingFace";
     }
 }

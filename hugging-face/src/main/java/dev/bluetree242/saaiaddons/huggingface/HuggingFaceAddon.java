@@ -6,7 +6,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class HuggingFaceAddon extends JavaPlugin {
     public static final String NAME = "huggingface";
-    private ServerAssistantAIAPI api;
 
     @Override
     public void onLoad() {
@@ -14,14 +13,10 @@ public class HuggingFaceAddon extends JavaPlugin {
         if (registration == null) {
             throw new IllegalStateException("Registered service provider is null");
         }
-        api = registration.getProvider();
-        api.waitForPlugin(this);
-    }
-
-    @Override
-    public void onEnable() {
+        ServerAssistantAIAPI api = registration.getProvider();
         api.getCredentialsRegistry().register(NAME, new HuggingFaceCredentialsLoader());
         api.getChatModelRegistry().register(NAME, new HuggingFaceChatModelProvider(api));
         api.getEmbeddingModelRegistry().register(NAME, new HuggingFaceEmbeddingProvider(api));
     }
+
 }

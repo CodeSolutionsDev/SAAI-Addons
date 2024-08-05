@@ -2,6 +2,8 @@ package dev.bluetree242.saaiaddons.anthropic;
 
 
 import dev.bluetree242.serverassistantai.api.ServerAssistantAIAPI;
+import dev.bluetree242.serverassistantai.api.config.option.OptionMap;
+import dev.bluetree242.serverassistantai.api.registry.chatmodel.ChatModelContext;
 import dev.bluetree242.serverassistantai.api.registry.chatmodel.ChatModelProvider;
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.ChatMessage;
@@ -26,21 +28,18 @@ public class AnthropicChatModelProvider implements ChatModelProvider<AnthropicCh
 
     @NotNull
     @Override
-    public AnthropicWrapper provide(@NotNull Map<String, Object> options) {
-        String model = (String) options.get("model");
-        Integer maxTokens = (Integer) options.get("max_tokens");
-        Integer maxRetries = (Integer) options.get("max_retries");
-        //noinspection unchecked
-        List<String> stop = (List<String>) options.get("stop");
+    public AnthropicWrapper provide(@NotNull ChatModelContext context) {
+        OptionMap options = context.options();
+        String model = options.getString("model");
         if (model.isBlank()) throw new IllegalStateException("Please set the model for Anthropic chat model.");
         return new AnthropicWrapper(
                 AnthropicChatModel.builder()
                         .modelName(model)
-                        .baseUrl((String) options.get("base_url"))
-                        .timeout(Duration.ofSeconds(Long.parseLong(options.get("timeout").toString())))
-                        .maxTokens(maxTokens == 0 ? null : maxTokens)
-                        .maxRetries(maxRetries)
-                        .stopSequences(stop)
+                        .baseUrl(options.getString("base_url"))
+                        .timeout(Duration.ofSeconds(options.getLong("timeout")))
+                        .maxTokens(options.getIntegerOrDefault("max_tokens", i -> i == 0, null))
+                        .maxRetries(options.getInteger("max_retries"))
+                        .stopSequences(options.getList("stop").getStringList())
                         .apiKey(api.getCredentialsRegistry().getConfigured(AnthropicAddon.NAME, AnthropicCredentialsLoader.class))
                         .build()
         );
@@ -61,8 +60,8 @@ public class AnthropicChatModelProvider implements ChatModelProvider<AnthropicCh
 
     @NotNull
     @Override
-    public Map<String, Object> export(@NotNull Map<String, Object> options) {
-        Map<String, Object> result = ChatModelProvider.super.export(options);
+    public Map<String, Object> export(@NotNull ChatModelContext context) {
+        Map<String, Object> result = ChatModelProvider.super.export(context);
         // Makes sure the "model" is always in the config even if it is not configured.
         result.putIfAbsent("model", "");
         return result;
@@ -70,7 +69,7 @@ public class AnthropicChatModelProvider implements ChatModelProvider<AnthropicCh
 
     @Nullable
     @Override
-    public String getDisplayName(@Nullable Map<String, Object> options) {
+    public String getDisplayName(@Nullable ChatModelContext context) {
         return "Anthropic";
     }
 

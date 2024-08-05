@@ -1,6 +1,8 @@
 package dev.bluetree242.saaiaddons.mistralai;
 
 import dev.bluetree242.serverassistantai.api.ServerAssistantAIAPI;
+import dev.bluetree242.serverassistantai.api.config.option.OptionMap;
+import dev.bluetree242.serverassistantai.api.registry.chatmodel.ChatModelContext;
 import dev.bluetree242.serverassistantai.api.registry.chatmodel.ChatModelProvider;
 import dev.langchain4j.model.mistralai.MistralAiChatModel;
 import lombok.RequiredArgsConstructor;
@@ -16,17 +18,16 @@ public class MistralAiChatModelProvider implements ChatModelProvider<MistralAiCh
 
     @NotNull
     @Override
-    public MistralAiChatModel provide(@NotNull Map<String, Object> options) {
-        String model = (String) options.get("model");
-        Integer maxTokens = (Integer) options.get("max_tokens");
-        Integer maxRetries = (Integer) options.get("max_retries");
+    public MistralAiChatModel provide(@NotNull ChatModelContext context) {
+        OptionMap options = context.options();
+        String model = options.getString("model");
         if (model.isBlank()) throw new IllegalStateException("Please set the model for MistralAI chat model.");
         return MistralAiChatModel.builder()
                 .modelName(model)
-                .baseUrl((String) options.get("base_url"))
-                .timeout(Duration.ofSeconds(Long.parseLong(options.get("timeout").toString())))
-                .maxTokens(maxTokens == 0 ? null : maxTokens)
-                .maxRetries(maxRetries)
+                .baseUrl(options.getString("base_url"))
+                .timeout(Duration.ofSeconds(options.getLong("timeout")))
+                .maxTokens(options.getIntegerOrDefault("max_tokens", i -> i == 0, null))
+                .maxRetries(options.getInteger("max_retries"))
                 .apiKey(api.getCredentialsRegistry().getConfigured(MistralAiAddon.NAME, MistralAiCredentialsLoader.class))
                 .build();
     }
@@ -45,8 +46,8 @@ public class MistralAiChatModelProvider implements ChatModelProvider<MistralAiCh
 
     @NotNull
     @Override
-    public Map<String, Object> export(@NotNull Map<String, Object> options) {
-        Map<String, Object> result = ChatModelProvider.super.export(options);
+    public Map<String, Object> export(@NotNull ChatModelContext context) {
+        Map<String, Object> result = ChatModelProvider.super.export(context);
         // Makes sure the "model" is always in the config even if it is not configured.
         result.putIfAbsent("model", "");
         return result;
@@ -54,7 +55,7 @@ public class MistralAiChatModelProvider implements ChatModelProvider<MistralAiCh
 
     @Nullable
     @Override
-    public String getDisplayName(@Nullable Map<String, Object> options) {
+    public String getDisplayName(@Nullable ChatModelContext context) {
         return "MistralAI";
     }
 }

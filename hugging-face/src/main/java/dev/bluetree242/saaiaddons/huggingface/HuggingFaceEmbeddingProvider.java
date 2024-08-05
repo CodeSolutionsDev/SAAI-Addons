@@ -1,6 +1,8 @@
 package dev.bluetree242.saaiaddons.huggingface;
 
 import dev.bluetree242.serverassistantai.api.ServerAssistantAIAPI;
+import dev.bluetree242.serverassistantai.api.config.option.OptionMap;
+import dev.bluetree242.serverassistantai.api.registry.embedding.EmbeddingContext;
 import dev.bluetree242.serverassistantai.api.registry.embedding.EmbeddingModelProvider;
 import dev.langchain4j.model.huggingface.HuggingFaceEmbeddingModel;
 import lombok.RequiredArgsConstructor;
@@ -16,13 +18,14 @@ public class HuggingFaceEmbeddingProvider implements EmbeddingModelProvider<Hugg
 
     @NotNull
     @Override
-    public HuggingFaceEmbeddingModel provide(@NotNull Map<String, Object> options) {
+    public HuggingFaceEmbeddingModel provide(@NotNull EmbeddingContext context) {
+        OptionMap options = context.options();
         String accessToken = api.getCredentialsRegistry().getConfigured(HuggingFaceAddon.NAME, HuggingFaceCredentialsLoader.class);
-        String model = (String) options.get("model");
+        String model = options.getString("model");
         if (model.isBlank()) throw new IllegalStateException("Please set the model for hugging face embedding model.");
         return HuggingFaceEmbeddingModel.builder().accessToken(accessToken)
                 .modelId(model)
-                .timeout(Duration.ofSeconds(Long.parseLong(options.get("timeout").toString())))
+                .timeout(Duration.ofSeconds(options.getLong("timeout")))
                 .waitForModel(true)
                 .build();
     }
@@ -38,15 +41,15 @@ public class HuggingFaceEmbeddingProvider implements EmbeddingModelProvider<Hugg
 
     @NotNull
     @Override
-    public Map<String, Object> export(@NotNull Map<String, Object> options) {
-        Map<String, Object> result = EmbeddingModelProvider.super.export(options);
+    public Map<String, Object> export(@NotNull EmbeddingContext context) {
+        Map<String, Object> result = EmbeddingModelProvider.super.export(context);
         result.putIfAbsent("model", "");
         return result;
     }
 
     @Nullable
     @Override
-    public String getDisplayName(@Nullable Map<String, Object> options) {
+    public String getDisplayName(@Nullable EmbeddingContext context) {
         return "HuggingFace";
     }
 }
