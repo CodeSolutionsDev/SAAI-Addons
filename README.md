@@ -83,7 +83,7 @@ The API is subject to change in future versions as we improve ServerAssistantAI 
 
 ### JavaDoc
 
-[![](https://img.shields.io/badge/JavaDoc-Released_API-4ac51c)](https://repo.bluetree242.dev/javadoc/releases/dev/bluetree242/serverassistantai/api/1.2.1/raw/index.html)
+[![](https://img.shields.io/badge/JavaDoc-Released_API-4ac51c)](https://repo.bluetree242.dev/javadoc/releases/dev/bluetree242/serverassistantai/api/1.3/raw/index.html)
 
 [![](https://img.shields.io/badge/JavaDoc-Development_API-FF7F7F)](https://repo.bluetree242.dev/javadoc/snapshots/dev/bluetree242/serverassistantai/api/1.3-SNAPSHOT/raw/index.html)
 
