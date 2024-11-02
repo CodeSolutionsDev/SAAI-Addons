@@ -1,6 +1,7 @@
 plugins {
     id("java")
     id("net.minecrell.plugin-yml.bukkit")
+    id("com.github.johnrengelman.shadow")
 }
 
 var pckg = rootProject.ext.get("pckg")
@@ -13,5 +14,12 @@ bukkit {
 }
 
 dependencies {
-    compileOnly(libs.retrofit2)
+    implementation(libs.langchain4j.googleai) {
+        isTransitive = false
+    }
+    bukkitLibrary(libs.retrofit2.gson)
+}
+
+tasks.shadowJar {
+    relocate("dev.langchain4j.model.googleai", "$pckg.dependencies.langchain4j.googleai")
 }
