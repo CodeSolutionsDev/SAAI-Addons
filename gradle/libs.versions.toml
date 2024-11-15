@@ -13,7 +13,7 @@ langchain4j = "0.36.2"
 retrofit2 = "2.11.0"
 
 # Annotations
-lombok = "1.18.34"
+lombok = "1.18.36"
 
 [libraries]
 
