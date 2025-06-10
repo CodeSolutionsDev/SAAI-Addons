@@ -8,7 +8,9 @@ import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.ChatMessage;
 import dev.langchain4j.data.message.SystemMessage;
 import dev.langchain4j.data.message.UserMessage;
-import dev.langchain4j.model.chat.ChatLanguageModel;
+import dev.langchain4j.model.chat.ChatModel;
+import dev.langchain4j.model.chat.request.ChatRequest;
+import dev.langchain4j.model.chat.response.ChatResponse;
 import dev.langchain4j.model.googleai.GeminiHarmBlockThreshold;
 import dev.langchain4j.model.googleai.GeminiHarmCategory;
 import dev.langchain4j.model.googleai.GoogleAiGeminiChatModel;
@@ -80,10 +82,21 @@ public class GoogleAiStudioChatModelProvider implements ChatModelProvider<Google
         return "Google AI Studio";
     }
 
-    public record GoogleAiWrapper(GoogleAiGeminiChatModel model) implements ChatLanguageModel {
+    public record GoogleAiWrapper(GoogleAiGeminiChatModel model) implements ChatModel {
         @Override
-        public Response<AiMessage> generate(List<ChatMessage> messages) {
-            return model.generate(UserMessage.userMessage(messages.stream().filter(m -> m instanceof SystemMessage).map(m -> (SystemMessage) m).map(SystemMessage::text).collect(Collectors.joining("\n\n\n\n"))));
+        public ChatResponse chat(ChatRequest request) {
+            return model.chat(new ChatRequest.Builder()
+                    .modelName(request.modelName())
+                    .maxOutputTokens(request.maxOutputTokens())
+                    .temperature(request.temperature())
+                    .stopSequences(request.stopSequences())
+                    .parameters(request.parameters())
+                    .topK(request.topK())
+                    .toolChoice(request.toolChoice())
+                    .toolSpecifications(request.toolSpecifications())
+                    .responseFormat(request.responseFormat())
+                    .messages(UserMessage.userMessage(request.messages().stream().filter(m -> m instanceof SystemMessage).map(m -> (SystemMessage) m).map(SystemMessage::text).collect(Collectors.joining("\n\n\n\n"))))
+                    .build());
         }
     }
 }
