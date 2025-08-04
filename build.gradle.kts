@@ -4,7 +4,7 @@ import net.minecrell.pluginyml.bukkit.BukkitPluginDescription
 plugins {
     id("java")
     id("net.minecrell.plugin-yml.bukkit") version "0.6.0" apply false
-    id("com.github.johnrengelman.shadow") version "8.1.1" apply false
+    id("com.gradleup.shadow") version "9.0.0-rc3" apply false
 }
 
 var pckg = "dev.bluetree242.saaiaddons"
@@ -61,9 +61,9 @@ gradle.projectsEvaluated {
             }
         }
         tasks.build {
-            finalizedBy(tasks.withType(ShadowJar::class.java))
+            dependsOn(tasks.withType(ShadowJar::class.java))
         }
-        if (plugins.hasPlugin("com.github.johnrengelman.shadow")) {
+        if (plugins.hasPlugin("com.gradleup.shadow")) {
             tasks.withType(ShadowJar::class.java) {
                 finalizedBy(copyBuildOutput)
                 archiveClassifier.set("")

@@ -1,7 +1,7 @@
 plugins {
     id("java")
     id("net.minecrell.plugin-yml.bukkit")
-    id("com.github.johnrengelman.shadow")
+    id("com.gradleup.shadow")
 }
 
 var pckg = rootProject.ext.get("pckg")
@@ -22,4 +22,3 @@ dependencies {
 tasks.shadowJar {
     relocate("dev.langchain4j.model.huggingface", "$pckg.dependencies.langchain4j.huggingface")
 }
-
