@@ -9,8 +9,8 @@ spigot = "1.16.5-R0.1-SNAPSHOT"
 serverassistantai = "1.4-SNAPSHOT"
 
 # Dependencies
-langchain4j = "1.2.0-beta8"
-langchain4j-stable = "1.2.0"
+langchain4j = "1.9.1-beta17"
+langchain4j-stable = "1.9.1"
 retrofit2 = "3.0.0"
 
 # Annotations
