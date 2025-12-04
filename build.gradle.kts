@@ -70,7 +70,9 @@ gradle.projectsEvaluated {
                 minimize()
                 archiveBaseName = tasks.jar.get().archiveBaseName
                 manifest {
-                    from(tasks.jar.get().manifest)
+                    attributes(
+                        project.tasks.named("jar", Jar::class.java).map { it.manifest.attributes }.get()
+                    )
                 }
             }
         } else {
