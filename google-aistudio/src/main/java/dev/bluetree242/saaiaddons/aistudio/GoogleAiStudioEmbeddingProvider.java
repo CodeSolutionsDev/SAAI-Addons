@@ -27,7 +27,13 @@ public class GoogleAiStudioEmbeddingProvider implements EmbeddingModelProvider<G
                 .apiKey(apiKey)
                 .modelName(model)
                 .timeout(Duration.ofSeconds(options.getLong("timeout")))
+                .taskType(context.forQueries() ? GoogleAiEmbeddingModel.TaskType.RETRIEVAL_QUERY : GoogleAiEmbeddingModel.TaskType.RETRIEVAL_DOCUMENT)
                 .build();
+    }
+
+    @Override
+    public boolean supportsQueryOptimization() {
+        return true;
     }
 
     @NotNull
