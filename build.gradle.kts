@@ -4,7 +4,7 @@ import net.minecrell.pluginyml.bukkit.BukkitPluginDescription
 plugins {
     id("java")
     id("net.minecrell.plugin-yml.bukkit") version "0.6.0" apply false
-    id("com.gradleup.shadow") version "9.3.0" apply false
+    id("com.gradleup.shadow") version "9.3.1" apply false
 }
 
 var pckg = "dev.bluetree242.saaiaddons"
