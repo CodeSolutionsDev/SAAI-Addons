@@ -23,9 +23,7 @@ subprojects {
         maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     }
     dependencies {
-        compileOnly(rootProject.libs.serverassistantai) {
-            exclude("com.discordsrv")
-        }
+        compileOnly(rootProject.libs.serverassistantai)
         compileOnly(rootProject.libs.spigot)
         compileOnly(rootProject.libs.lombok)
         annotationProcessor(rootProject.libs.lombok)
@@ -60,10 +58,10 @@ gradle.projectsEvaluated {
                 archiveBaseName = bukkit.name
             }
         }
-        tasks.build {
-            dependsOn(tasks.withType(ShadowJar::class.java))
-        }
         if (plugins.hasPlugin("com.gradleup.shadow")) {
+            tasks.build {
+                dependsOn(tasks.withType(ShadowJar::class.java))
+            }
             tasks.withType(ShadowJar::class.java) {
                 finalizedBy(copyBuildOutput)
                 archiveClassifier.set("")
@@ -75,8 +73,6 @@ gradle.projectsEvaluated {
                     )
                 }
             }
-        } else {
-            tasks.build.get().finalizedBy(copyBuildOutput)
         }
     }
 }
@@ -84,8 +80,6 @@ gradle.projectsEvaluated {
 val outputDir = file("out")
 
 val copyBuildOutput by tasks.registering {
-    dependsOn(subprojects.map { it.tasks.build.get() })
-
     doLast {
         subprojects.forEach { sp ->
             val buildLibsDir = sp.layout.buildDirectory.get().dir("libs").asFile
