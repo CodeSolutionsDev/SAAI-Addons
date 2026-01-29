@@ -46,8 +46,8 @@ public class HuggingFaceChatModelProvider implements ChatModelProvider<HuggingFa
 
     @NotNull
     @Override
-    public Map<String, Object> export(@NotNull ChatModelContext context) {
-        Map<String, Object> result = ChatModelProvider.super.export(context);
+    public OptionMap export(@NotNull ChatModelContext context) {
+        OptionMap result = ChatModelProvider.super.export(context);
         result.putIfAbsent("model", "");
         return result;
     }

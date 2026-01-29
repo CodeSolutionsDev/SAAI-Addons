@@ -44,8 +44,8 @@ public class MistralAiEmbeddingProvider implements EmbeddingModelProvider<Mistra
 
     @NotNull
     @Override
-    public Map<String, Object> export(@NotNull EmbeddingContext context) {
-        Map<String, Object> result = EmbeddingModelProvider.super.export(context);
+    public OptionMap export(@NotNull EmbeddingContext context) {
+        OptionMap result = EmbeddingModelProvider.super.export(context);
         // Makes sure the "model" is always in the config even if it is not configured.
         result.putIfAbsent("model", "");
         return result;

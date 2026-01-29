@@ -58,8 +58,8 @@ public class AnthropicChatModelProvider implements ChatModelProvider<AnthropicCh
 
     @NotNull
     @Override
-    public Map<String, Object> export(@NotNull ChatModelContext context) {
-        Map<String, Object> result = ChatModelProvider.super.export(context);
+    public OptionMap export(@NotNull ChatModelContext context) {
+        OptionMap result = ChatModelProvider.super.export(context);
         // Makes sure the "model" is always in the config even if it is not configured.
         result.putIfAbsent("model", "");
         return result;

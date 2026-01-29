@@ -48,8 +48,8 @@ public class AzureOpenAiEmbeddingProvider implements EmbeddingModelProvider<Azur
 
     @NotNull
     @Override
-    public Map<String, Object> export(@NotNull EmbeddingContext context) {
-        Map<String, Object> result = EmbeddingModelProvider.super.export(context);
+    public OptionMap export(@NotNull EmbeddingContext context) {
+        OptionMap result = EmbeddingModelProvider.super.export(context);
         // Makes sure the "deployment_name" is always in the config even if it is not configured.
         result.putIfAbsent("deployment_name", "");
         result.putIfAbsent("service_version", "");

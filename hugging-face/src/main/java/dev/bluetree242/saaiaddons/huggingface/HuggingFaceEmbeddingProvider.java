@@ -41,8 +41,8 @@ public class HuggingFaceEmbeddingProvider implements EmbeddingModelProvider<Hugg
 
     @NotNull
     @Override
-    public Map<String, Object> export(@NotNull EmbeddingContext context) {
-        Map<String, Object> result = EmbeddingModelProvider.super.export(context);
+    public OptionMap export(@NotNull EmbeddingContext context) {
+        OptionMap result = EmbeddingModelProvider.super.export(context);
         result.putIfAbsent("model", "");
         return result;
     }
