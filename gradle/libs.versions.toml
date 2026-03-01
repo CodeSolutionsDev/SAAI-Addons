@@ -6,7 +6,7 @@ metadata.format.version = "1.1"
 spigot = "1.16.5-R0.1-SNAPSHOT"
 
 # ServerAssistantAI itself
-serverassistantai = "1.4-SNAPSHOT"
+serverassistantai = "1.4"
 
 # Dependencies
 langchain4j-stable = "1.11.0"
